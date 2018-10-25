@@ -1,0 +1,21 @@
+<h1>Start your job applicaiton</h1>
+
+<%= semantic_form_for @applicant do |f| %>
+  <%= f.inputs "Contact Information", :id => "basic" do %>
+    <%= f.input :name, :input_html => { :size => 20 } %>
+    <%= f.input :email, :input_html => { :size => 20 } %>
+    <%= f.input :phone, :input_html => { :size => 20 } %>
+  <% end %>
+  <%= f.inputs :name => "Education Background", :id => "advanced" do %>
+      <%= f.input :university, :as => :select, :collection => University.pluck(:name) %>
+      <%= f.input :major %>
+      <%= f.input :graduation_time, :label => "Intended graduation date", :as => :date_select%>
+      <%= f.input :sponsorship, :label => "Do you need sponsorship?",:as => :radio %>
+      <%= f.input :degree, :as => :select, :collection => Degree.pluck(:degree) %>
+      <%= f.input :resume, :input_html => { :class => 'autogrow', :rows => 10, :cols => 100, :maxlength => 100  } %>
+    <% end %>
+  <%= f.actions do %>
+      <%= f.action :submit, :as => :button, :label => "Submit"%>
+      <%= f.action :cancel, :as => :link, :label => "Cancel your application" %>
+  <% end %>
+<% end %>

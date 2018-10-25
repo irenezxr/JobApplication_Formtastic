@@ -1,0 +1,9 @@
+<%= semantic_form_for @degree do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :degree %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
